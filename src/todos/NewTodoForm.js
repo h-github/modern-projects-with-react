@@ -1,28 +1,36 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { createTodo } from "../actions";
 
-const NewTodoForm = () => {
+const NewTodoForm = ({ todos, onCreatePressed }) => {
   const [todo, setTodo] = useState("");
 
-  const _handleSubmit = () => {
-    console.log(todo);
+  const _handleSubmit = e => {
+    e.preventDefault();
+    if (todo && todos.filter(td => td.text === todo).length === 0) {
+      onCreatePressed(todo);
+    }
+    setTodo("");
   };
 
   return (
-    <div>
-      <h1>Create Todo</h1>
-      <form onSubmit={() => _handleSubmit()}>
-        <div class="form-group">
-          <label for="todoText">Todo</label>
+    <div className="jumbotron">
+      <h2>Create Todo</h2>
+      <br />
+      <form onSubmit={e => _handleSubmit(e)}>
+        <div className="form-group">
           <input
             name="todoText"
             type="text"
-            class="form-control"
+            className="form-control"
             aria-describedby="todoHelp"
-            placeholder="Enter todo"
+            placeholder="Type your new todo"
+            value={todo}
+            onChange={event => setTodo(event.target.value)}
           ></input>
         </div>
 
-        <button className="btn btn-success" type="submit">
+        <button className="btn btn-primary" type="submit">
           Create Todo
         </button>
       </form>
@@ -30,4 +38,12 @@ const NewTodoForm = () => {
   );
 };
 
-export default NewTodoForm;
+const mapStateToProps = state => ({
+  todos: state.todos,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onCreatePressed: text => dispatch(createTodo(text)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTodoForm);

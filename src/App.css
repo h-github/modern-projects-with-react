@@ -1,5 +1,13 @@
 .App {
-  margin: 1rem;
+  margin: auto;
   font-family: Arial, Helvetica, sans-serif;
   color: #222222;
+}
+
+.todo-item-text {
+  padding: 5px 10px;
+}
+
+button.vertical-margin {
+  margin: 0 5px;
 }

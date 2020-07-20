@@ -5,9 +5,8 @@ import NewTodoForm from "./todos/NewTodoForm";
 import "./App.css";
 
 const App = () => (
-  <div className="App jumbotron">
-    <TodoList todos={[]} />
-    <NewTodoForm />
+  <div className="App">
+    <TodoList />
   </div>
 );
 
