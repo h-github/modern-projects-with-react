@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { connect } from "react-redux";
-import { removeTodo, markTodAsCompleted } from "../actions";
+import React from "react";
 
 const TododListItem = ({ todo, onDeletePressed, onCompletedPressed }) => {
   return (
