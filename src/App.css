@@ -6,8 +6,19 @@
 
 .todo-item-text {
   padding: 5px 10px;
+  overflow-wrap: break-word;
 }
 
 button.vertical-margin {
   margin: 0 5px;
+}
+
+button {
+  max-height: 38px;
+}
+
+.todo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
